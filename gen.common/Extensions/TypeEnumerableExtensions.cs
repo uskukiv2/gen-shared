@@ -15,7 +15,7 @@ namespace gen.common.Extensions
 
         public static async Task<List<TSource>> ToListAsync<TSource>(this IEnumerable<TSource> enumerable)
         {
-            var task = Task.Factory.StartNew(async () => enumerable.ToList());
+            var task = Task.Factory.StartNew(() => Task.FromResult(enumerable.ToList()));
             return await await task;
         }
     }
